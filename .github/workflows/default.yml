@@ -23,8 +23,12 @@ jobs:
         run: ./gradlew run
 
       - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@master
+        uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          EMAIL: infilos00@gmail.com
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BUILD_DIR: build/docs
+        with:
+          email: infilos00@gmail.com
+          build_dir: build/docs
+          cname: fxdocs.infilos.com
+
+          
