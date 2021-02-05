@@ -20,21 +20,20 @@ asciidoctorj {
 }
 
 asciidoctor {
-    backends 'pdf','html5'
+    backends 'pdf', 'html5'
     outputDir = file("$buildDir/docs")
     sources {
         include 'index.asc'
     }
     resources {
-        from ('src/docs/asciidoc') {
+        from('src/docs/asciidoc') {
             include '**/*.png'
             include '**/*.jpg'
             include '**/*.jpeg'
         }
     }
     options doctype: 'book'
-    attributes \
-            'source-highlighter': 'prettify',
+    attributes 'source-highlighter': 'prettify',
             'toc': 'left',
             'toc-title': 'Table of Contents',
             'pdf-fontsdir': 'fonts',
@@ -44,22 +43,22 @@ asciidoctor {
 
 defaultTasks 'asciidoctor'
 
-task run(dependsOn:asciidoctor)
+task run(dependsOn: asciidoctor)
 
 githubPages {
-  repoUri = 'https://github.com/FXDocs/docs.git'
-  pages {
-    from(file('build/docs/html5')) {
-      include 'index.html'
-      include '**/*.png'
-      include '**/*.jpg'
-      include '**/*.jpeg'
-      into '.'
+    repoUri = 'https://github.com/FXDocs/docs.git'
+    pages {
+        from(file('build/docs/html5')) {
+            include 'index.html'
+            include '**/*.png'
+            include '**/*.jpg'
+            include '**/*.jpeg'
+            into '.'
+        }
+        from(file('build/docs/pdf')) {
+            include 'index.pdf'
+            rename('index.pdf', 'book.pdf')
+            into '.'
+        }
     }
-    from(file('build/docs/pdf')) {
-      include 'index.pdf'
-      rename ('index.pdf', 'book.pdf')
-      into '.'
-    }
-  }
 }
