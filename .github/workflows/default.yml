@@ -23,13 +23,21 @@ jobs:
       - name: Build Docs
         run: ./gradlew run
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy HTML to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          build_dir: build/docs
+          build_dir: build/docs/html5
           cname: fxdocs.infilos.com
           email: infilos00@gmail.com
 
+      - name: Deploy PDF to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          build_dir: build/docs/pdf
+          cname: fxdocs.infilos.com
+          email: infilos00@gmail.com
           
