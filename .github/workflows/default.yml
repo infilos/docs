@@ -25,6 +25,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@master
         env:
-          EMAIL: jonathan@jonathangiles.net
+          EMAIL: infilos00@gmail.com
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BUILD_DIR: build/docs

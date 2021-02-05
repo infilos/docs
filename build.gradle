@@ -46,7 +46,7 @@ defaultTasks 'asciidoctor'
 task run(dependsOn: asciidoctor)
 
 githubPages {
-    repoUri = 'https://github.com/FXDocs/docs.git'
+    repoUri = 'https://github.com/infilos/docs'
     pages {
         from(file('build/docs/html5')) {
             include 'index.html'
